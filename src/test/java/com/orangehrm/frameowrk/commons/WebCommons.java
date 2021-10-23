@@ -66,9 +66,9 @@ public class WebCommons {
 	
 	//Method to generate unique random id
 	public static String generateUniqueID() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss"); // we have to specify the format
-		Calendar cal = Calendar.getInstance();
-		String uniqueid = sdf.format(cal.getTime());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // we have to specify the format
+		Calendar cal = Calendar.getInstance(); // getInstance returns the current time zone with time
+		String uniqueid = sdf.format(cal.getTime()); // getTime returns the no of milliseconds with dob
 		return uniqueid;		
 	}
 	

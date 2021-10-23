@@ -12,6 +12,7 @@ import com.orangehrm.pages.AdminOrganization;
 import com.orangehrm.pages.AdminPannel;
 import com.orangehrm.pages.ForgotPassword;
 import com.orangehrm.pages.HomePage;
+import com.orangehrm.pages.LeaveMenuAssign;
 import com.orangehrm.pages.LoginPage;
 
 public class OranageHRMTest extends WebDriverClass {
@@ -45,7 +46,7 @@ public class OranageHRMTest extends WebDriverClass {
 		homePage.verifyApplicationLogout();
 	}
 	
-	@Test(priority=4, enabled = true)
+	@Test(priority=4, enabled = false)
 	public void VerfiyForgotPasswordPage() throws IOException {
 		initiateTestCaseReporting("Verify Forgot Password Page");
 		LoginPage loginpage = LoginPage.getLoginPage();
@@ -114,4 +115,18 @@ public class OranageHRMTest extends WebDriverClass {
 		homePage.verifyWhetherAppLoginIsSuccessful();	
 		adminconfiSMAgpage.verifyAdminPageConfigSMAElements();
 	}
+	@Test(dataProvider="data", priority=10, enabled =true)
+	public void VerfiyLeaveAssignPage(String Username,String Password) throws IOException {
+		initiateTestCaseReporting("Verify Leave Assign page");
+		LoginPage loginpage = LoginPage.getLoginPage();
+		HomePage homePage = HomePage.getHomePage();
+		LeaveMenuAssign leaveassignpage = LeaveMenuAssign.getLeaveMenuAssign();
+		loginpage.launchTheApplication();
+		loginpage.LoginIntoApplication(Username, Password);
+		homePage.verifyWhetherAppLoginIsSuccessful();	
+		leaveassignpage.verifyLeaveMenuAssignPage();
+	}
 }
+
+
+
